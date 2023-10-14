@@ -13,7 +13,7 @@ Uses Google Colab & Jupyter notebook to create an AI Avatar project using Dreamb
 - Step 0: Connect to a virtual machine and Google Drive
 - Step 1: Install Requirements
 - Step 2:[Create Hugginface.co access token](https://huggingface.co/settings/tokens)
-- Step 3: Install xformers from precompiled wheels,use the following if you have issues (ETA:~40mins): `pip install git+https://github.com/facebookresearch/xformers@4c06c79#egg=xformers`
+- Step 3: Install xformers from precompiled wheels, use the following if you have issues (ETA:~40mins): `pip install git+https://github.com/facebookresearch/xformers@4c06c79#egg=xformers`
 - Step 4: Configure your model //TODO
 - Step 5: Configure the training resources
 - Step 5.5 - Tell Stable Diffusion what you're turning for
