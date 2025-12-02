@@ -7,7 +7,7 @@ Thank you for your interest in contributing! We welcome contributions from every
 - [Code of Conduct](#code-of-conduct)
 - [Getting Started](#getting-started)
 - [How to Contribute](#how-to-contribute)
-- [Development Setup](#development-development-setup)
+- [Development Setup](#development-setup)
 - [Pull Request Process](#pull-request-process)
 - [Coding Standards](#coding-standards)
 - [Reporting Bugs](#reporting-bugs)
