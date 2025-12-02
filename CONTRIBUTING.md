@@ -1,4 +1,4 @@
-# Contributing to [Project Name]
+# Contributing to Avatar
 
 Thank you for your interest in contributing! We welcome contributions from everyone.
 
