@@ -1,5 +1,9 @@
 # avatar
 
+
+<!-- Deployment Status -->
+[![Deploy Status](https://github.com/nitsuah/avatar/actions/workflows/deploy.yml/badge.svg)](https://github.com/nitsuah/avatar/actions)
+
 Uses Google Colab & Jupyter notebook to create an AI Avatar project using Dreambooth and Stable Diffusion.
 
 ## Prerequisites

@@ -1,0 +1,66 @@
+repos:
+  # General hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-added-large-files
+      - id: check-merge-conflict
+      - id: detect-private-key
+
+  # Python-specific hooks (for any .py files)
+  - repo: https://github.com/psf/black
+    rev: 24.4.2
+    hooks:
+      - id: black
+        language_version: python3
+        types: [python]
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2
+    hooks:
+      - id: isort
+        name: isort (python)
+        language_version: python3
+        types: [python]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 7.0.0
+    hooks:
+      - id: flake8
+        name: flake8 (python)
+        language_version: python3
+        types: [python]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.10.0
+    hooks:
+      - id: mypy
+        name: mypy (python)
+        language_version: python3
+        additional_dependencies: [types-all]
+        types: [python]
+
+  # Jupyter Notebook hooks
+  - repo: https://github.com/nbQA-dev/nbQA
+    rev: 1.7.1
+    hooks:
+      - id: nbqa-black
+        name: nbqa-black
+        args: ["--line-length=120"] # Consistent with black's configuration in pyproject.toml
+
+      - id: nbqa-isort
+        name: nbqa-isort
+
+      - id: nbqa-flake8
+        name: nbqa-flake8
+        args: ["--ignore=E501,W503"] # Example: Ignore line length and implicit line join warnings, adjust as needed.
+
+  # Markdown/Documentation
+  - repo: https://github.com/DavidAnson/markdownlint-cli2
+    rev: v0.14.0
+    hooks:
+      - id: markdownlint-cli2
+        files: \.(md|MD)$
