@@ -17,7 +17,8 @@
 ```bash
 #!/usr/bin/env bash
 python -m pip install -r requirements.txt
-jupyter nbconvert --to html avatar.ipynb --ExecutePreprocessor.timeout=600 --execute
+NOTEBOOK="${1:-avatar.ipynb}"
+jupyter nbconvert --to html "$NOTEBOOK" --ExecutePreprocessor.timeout=600 --execute
 ```
 
 <!--
