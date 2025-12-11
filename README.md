@@ -4,6 +4,32 @@
 
 Uses Google Colab & Jupyter notebook to create an AI Avatar project using Dreambooth and Stable Diffusion.
 
+## Running Locally with Docker
+
+This repo includes a simple Docker setup to run the Jupyter Notebook locally.
+
+### Quick start
+
+```pwsh
+# Build the image
+docker compose build
+
+# Start the notebook server (port 8888)
+docker compose up
+```
+
+Open `http://localhost:8888/` in your browser.
+
+### Authentication
+
+- By default, `docker-compose.yml` reads `JUPYTER_TOKEN` from `.env`.
+- Leave `JUPYTER_TOKEN` empty in `.env` to disable token locally, or set a value for protection.
+
+### Notes
+
+- The container runs as a non-root user and does not use `--allow-root`.
+- A healthcheck is configured to ensure the notebook endpoint is responsive.
+
 ## Prerequisites
 
 - 4-5 GB/s of free space on Google Drive
