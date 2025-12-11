@@ -12,7 +12,7 @@
 - [ ] Add `python -m pip install -r requirements.txt` instructions to README.
 - [ ] Clear output and run notebook to ensure no hidden state.
 - [ ] Export to `examples/avatar.html` (nbconvert) and commit.
-- [ ] Add `run_notebook.sh`
+- [ ] Create `run_notebook.sh` from the template below
 
 ```bash
 #!/usr/bin/env bash
