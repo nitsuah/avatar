@@ -1,0 +1,8 @@
+jupyter
+notebook
+ipykernel
+matplotlib
+pandas
+numpy
+pytest
+pytest-cov
