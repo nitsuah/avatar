@@ -34,7 +34,9 @@ jobs:
     - name: Test with pytest
       run: |
         pip install pytest
-        pytest
+        # Run tests in the 'tests/' directory. If no tests are found, pytest will fail.
+        # All test files should be placed in the 'tests/' directory and named 'test_*.py'.
+        pytest tests
 
     - name: Build Notebooks
       run: |
