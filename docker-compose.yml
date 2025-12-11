@@ -1,9 +1,9 @@
-version: "3.9"
 services:
   notebook:
     build:
       context: .
       dockerfile: Dockerfile
+    image: avatar-notebook
     ports:
       - "8888:8888"
     environment:
