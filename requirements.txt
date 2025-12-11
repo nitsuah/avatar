@@ -4,3 +4,5 @@ ipykernel
 matplotlib
 pandas
 numpy
+pytest
+pytest-cov
