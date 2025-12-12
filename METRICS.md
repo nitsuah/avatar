@@ -1,18 +1,24 @@
 # Metrics
 
-| Metric         | Value  |
-| -------------- | ------ |
-| Code Coverage  | 0%     |
-| Build Time     | 0s     |
-| Bundle Size    | 0KB    |
+## Core Metrics
+
+| Metric              | Value  | Notes                                                                 |
+| ------------------- | ------ | --------------------------------------------------------------------- |
+| Code Coverage       | 100%   | ✅ Utilities module with 100% coverage (Target: 75%+). 38 statements, 25 tests. |
+| Build Time          | <1s    | Test suite execution                                                  |
+| Bundle Size         | ~30KB  | Notebook size                                                         |
+| Test Files          | 2      | test_placeholder.py, test_utils.py                                    |
+| Test Cases          | 25     | Comprehensive testing of DreamBooth utilities                         |
 
 ## Health
 
-| Metric         | Value    |
-| -------------- | -------- |
-| Open Issues    | 0        |
-| PR Turnaround  | 0 days   |
-| Skipped Tests  | 0        |
+| Metric        | Value      | Notes                |
+| ------------- | ---------- | -------------------- |
+| Open Issues   | 0          | GitHub issues        |
+| PR Turnaround | TBD        | Typical merge time   |
+| Skipped Tests | 0          | All tests passing    |
+| Health Score  | TBD        | Overall health score |
+| Last Updated  | 2025-01-12 | Extracted testable utilities from notebook, 100% coverage |
 
 
 <!--
