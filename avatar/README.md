@@ -13,16 +13,19 @@ Rather than refactoring the entire notebook, we:
 ## Available Utilities
 
 ### Concepts Management
+
 - `create_concepts_list()` - Generate training concepts configuration
 - `save_concepts_json()` / `load_concepts_json()` - Persist concepts to disk
 - `validate_concept_structure()` - Validate concept dictionaries
 
-### Directory Management  
+### Directory Management
+
 - `create_instance_directories()` - Create training data directories
 - `count_images_in_directory()` - Count training images
 - `validate_image_count()` - Ensure optimal image count (3-10 images)
 
 ### Training Configuration
+
 - `calculate_recommended_training_steps()` - Rule of thumb: 100 steps per image + 100 base
 - `build_training_command()` - Generate accelerate launch command
 
@@ -76,6 +79,7 @@ All 25 tests pass with 100% coverage.
 ## Future Options
 
 If you decide to refactor later:
+
 1. Move more logic from notebook cells into utilities
 2. Create a CLI tool using these utilities
 3. Build a web interface with the same backend
