@@ -1,18 +1,24 @@
 # Metrics
 
-| Metric         | Value  |
-| -------------- | ------ |
-| Code Coverage  | 0%     |
-| Build Time     | 0s     |
-| Bundle Size    | 0KB    |
+## Core Metrics
+
+| Metric              | Value  | Notes                                                                 |
+| ------------------- | ------ | --------------------------------------------------------------------- |
+| Code Coverage       | N/A    | Project contains only Jupyter Notebooks; no Python source files to cover. |
+| Build Time          | N/A    | Notebook execution                                                    |
+| Bundle Size         | ~30KB  | Notebook size                                                         |
+| Test Files          | 1      | test_placeholder.py (ensures CI pipeline runs)                        |
+| Test Cases          | 1      | Placeholder test                                                      |
 
 ## Health
 
-| Metric         | Value    |
-| -------------- | -------- |
-| Open Issues    | 0        |
-| PR Turnaround  | 0 days   |
-| Skipped Tests  | 0        |
+| Metric        | Value      | Notes                |
+| ------------- | ---------- | -------------------- |
+| Open Issues   | 0          | GitHub issues        |
+| PR Turnaround | TBD        | Typical merge time   |
+| Skipped Tests | 0          | All tests passing    |
+| Health Score  | TBD        | Overall health score |
+| Last Updated  | 2025-12-11 | Last audit date      |
 
 
 <!--
