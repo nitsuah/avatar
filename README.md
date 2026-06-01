@@ -54,3 +54,9 @@ Open `http://localhost:8888/` in your browser.
 - Step 9 - Inference
 - Step 10 - Generate images!
 - Step 11 - Upload your custom trained model to HuggingFace
+## Community Standards
+
+Shared community policies are centralized in https://github.com/nitsuah/.github:
+- Contributing: https://github.com/nitsuah/.github/blob/main/CONTRIBUTING.md
+- Code of Conduct: https://github.com/nitsuah/.github/blob/main/CODE_OF_CONDUCT.md
+- Security: https://github.com/nitsuah/.github/blob/main/SECURITY.md
