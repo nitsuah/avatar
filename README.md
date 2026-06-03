@@ -4,30 +4,29 @@
 
 Uses Google Colab & Jupyter notebook to create an AI Avatar project using Dreambooth and Stable Diffusion.
 
-## Running Locally with Docker
+## Development
 
-This repo includes a simple Docker setup to run the Jupyter Notebook locally.
+All checks run via Docker — no local Python required.
 
-### Quick start
-
-```pwsh
-# Build the image
-docker compose build
-
-# Start the notebook server (port 8888)
-docker compose up
+**Run tests (25 unit tests):**
+```bash
+docker compose -f config/docker-compose.yml --profile test run --rm test
 ```
 
-Open `http://localhost:8888/` in your browser.
+**Start the Jupyter notebook server:**
+```bash
+docker compose -f config/docker-compose.yml up notebook
+```
+Open `http://localhost:8888/`. Set `JUPYTER_TOKEN` in `.env` for auth, or leave empty to disable locally.
 
-### Authentication
-
-- By default, `docker-compose.yml` reads `JUPYTER_TOKEN` from `.env`.
-- Leave `JUPYTER_TOKEN` empty in `.env` to disable token locally, or set a value for protection.
+**Pre-commit hooks** (lint/format on commit, tests on push):
+```bash
+pip install pre-commit && pre-commit install && pre-commit install --hook-type pre-push
+```
 
 ### Notes
 
-- The container runs as a non-root user and does not use `--allow-root`.
+- The notebook container runs as a non-root user and does not use `--allow-root`.
 - A healthcheck is configured to ensure the notebook endpoint is responsive.
 
 ## Prerequisites
@@ -54,3 +53,9 @@ Open `http://localhost:8888/` in your browser.
 - Step 9 - Inference
 - Step 10 - Generate images!
 - Step 11 - Upload your custom trained model to HuggingFace
+## Community Standards
+
+Shared community policies are centralized in https://github.com/nitsuah/.github:
+- Contributing: https://github.com/nitsuah/.github/blob/main/CONTRIBUTING.md
+- Code of Conduct: https://github.com/nitsuah/.github/blob/main/CODE_OF_CONDUCT.md
+- Security: https://github.com/nitsuah/.github/blob/main/SECURITY.md

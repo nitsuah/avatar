@@ -1,9 +1,18 @@
 version: "3.9"
 services:
+  test:
+    build:
+      context: ..
+      dockerfile: Dockerfile
+      target: test
+    profiles:
+      - test
+
   notebook:
     build:
-      context: .
+      context: ..
       dockerfile: Dockerfile
+      target: notebook
     ports:
       - "8888:8888"
     environment:
@@ -15,4 +24,4 @@ services:
       retries: 3
       start_period: 40s
     volumes:
-      - .:/app
+      - ..:/app

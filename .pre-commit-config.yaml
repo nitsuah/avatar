@@ -1,11 +1,14 @@
+# .pre-commit-config.yaml
+# Run tests via Docker: docker compose -f config/docker-compose.yml --profile test run --rm test
+
 repos:
-  # General hooks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.5.0
+    rev: v5.0.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
+      - id: check-json
       - id: check-added-large-files
       - id: check-merge-conflict
       - id: detect-private-key
@@ -58,9 +61,16 @@ repos:
         name: nbqa-flake8
         args: ["--ignore=E501,W503"] # Example: Ignore line length and implicit line join warnings, adjust as needed.
 
-  # Markdown/Documentation
   - repo: https://github.com/DavidAnson/markdownlint-cli2
     rev: v0.14.0
     hooks:
       - id: markdownlint-cli2
         files: \.(md|MD)$
+  - repo: local
+    hooks:
+      - id: docker-test
+        name: unit tests (docker)
+        language: system
+        entry: docker compose -f config/docker-compose.yml --profile test run --rm test
+        pass_filenames: false
+        stages: [pre-push]
