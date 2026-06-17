@@ -14,6 +14,8 @@
 
 - [ ] Advanced features
 - [ ] Mobile support
+- [ ] **Batch generation mode** — accept a list of seed values (names, usernames, IDs) and export all generated avatars as a zip archive; useful for seeding test databases or populating user-directory mockups in one step.
+- [ ] **Seed interpolation / morph frames** — given two seeds, generate an N-frame interpolation sequence between the two avatars and export as GIF or PNG strip; enables smooth avatar transition animations in UIs.
 
 ## Q4
 
