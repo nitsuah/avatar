@@ -59,11 +59,16 @@ print(f"Recommended steps: {steps}")
 
 ## Testing
 
-Run tests locally:
+Run tests via Docker (recommended — no local Python required):
 
 ```bash
-cd avatar
-python -m pytest --cov=avatar --cov-report=term-missing tests/
+docker compose -f config/docker-compose.yml --profile test run --rm test
+```
+
+Or directly, from the **repo root** (the `tests/` directory is at the top level, not inside `avatar/`):
+
+```bash
+PYTHONPATH=. pytest tests/ --cov=avatar --cov-report=term-missing
 ```
 
 All 25 tests pass with 100% coverage.

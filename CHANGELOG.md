@@ -8,13 +8,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
-- Added example notebook demonstrating basic avatar generation.
+- Added batch generation mode and seed interpolation roadmap items (#16).
 
 ### Changed
-- Refactored core avatar generation logic for improved performance.
+- Documentation audit: corrected inaccuracies in README, FEATURES.md, ROADMAP.md, and TASKS.md to accurately reflect the DreamBooth/Stable Diffusion pipeline.
+- Bumped `actions/checkout` from v6 to v7 in CI (#17).
+- Bumped `actions/setup-python` from v6 to v7 in CI (#18).
 
 ### Fixed
-- Fixed a bug where certain input parameters would cause the avatar generation to fail.
+- Added explicit `contents: read` permission to CI build job to resolve GITHUB_TOKEN scope warning (#19).
 
 ### Security
 
