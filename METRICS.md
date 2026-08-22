@@ -18,7 +18,7 @@
 | PR Turnaround | TBD        | Typical merge time   |
 | Skipped Tests | 0          | All tests passing    |
 | Health Score  | TBD        | Overall health score |
-| Last Updated  | 2025-01-12 | Extracted testable utilities from notebook, 100% coverage |
+| Last Updated  | 2026-08-21 | Documentation audit and accuracy pass |
 
 
 <!--
