@@ -25,6 +25,7 @@ pip install pre-commit && pre-commit install && pre-commit install --hook-type p
 ```
 
 **Install dependencies (for local development outside Docker):**
+
 ```bash
 pip install -r config/requirements.txt
 ```
@@ -38,15 +39,15 @@ pip install -r config/requirements.txt
 
 ## Prerequisites
 
-- **GPU required** for DreamBooth training. Google Colab provides a free T4/A100 GPU — use the Colab link below.
+- **GPU required** for DreamBooth training. Google Colab may provide a free GPU runtime; GPU type and quota vary — use the Colab link below.
 - 4-5 GB of free space on Google Drive
 - [Copy Colab file to your Google Drive](https://colab.research.google.com/github/buildspace/diffusers/blob/main/examples/dreambooth/DreamBooth_Stable_Diffusion.ipynb?utm_source=buildspace.so&utm_medium=buildspace_project#scrollTo=XU7NuMAA2drw)
 - [Register or Login at HuggingFace.co](https://huggingface.co/login)
-- A HuggingFace account is required to download the base model (`runwayml/stable-diffusion-v1-5`)
+- A HuggingFace account is only needed for uploads or gated models; `runwayml/stable-diffusion-v1-5` is public and ungated
 
 ## How It Works
 
-This project uses **DreamBooth**, a few-shot fine-tuning technique that personalizes a pre-trained text-to-image diffusion model. You supply 3–10 photos; DreamBooth trains the model to associate a unique token (e.g., `nitsuah man`) with your appearance. After training you can generate the subject in any style described by a text prompt.
+This project uses **DreamBooth**, a few-shot fine-tuning technique that personalizes a pre-trained text-to-image diffusion model. You supply 3–10 photos; DreamBooth trains the model to associate a unique identifier and class name with your appearance (e.g., instance identifier `nitsuah` and class name `man`, passed as separate parameters). After training you can generate the subject in any style described by a text prompt.
 
 Key training settings:
 - Base model: `runwayml/stable-diffusion-v1-5`
@@ -69,8 +70,8 @@ Key training settings:
 - Step 6: Upload your photos (3–10 images recommended)
 - Step 7.1: Change `max_train_steps` (MAX: 2000; recommended: 100 × number of images + 100)
 - Step 7.2: Update `save_sample_prompt` — use a descriptive prompt such as `Photo of NITSUAH MAN, highly detailed, 8k, uhd, studio lighting, beautiful`
-- Step 7.2: Set prior preservation weights (run without changes on first pass)
-- Step 7.3: Generate test images to preview results
+- Step 7.3: Set prior preservation weights (run without changes on first pass)
+- Step 7.4: Generate test images to preview results
 - Step 8: Convert weights to CKPT format
 - Step 9: Inference — generate images from the trained model
 - Step 10: Generate images with custom prompts

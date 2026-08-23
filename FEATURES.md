@@ -16,14 +16,14 @@
 
 ## Developer Utilities (`avatar/utils.py`)
 
-- **`create_concepts_list`** — Generates a concepts configuration dict from an instance name and class name.
+- **`create_concepts_list`** — Generates a list of concept dictionaries from an instance name and class name.
 - **`save_concepts_json` / `load_concepts_json`** — Serializes and deserializes the concepts list to/from a JSON file.
 - **`create_instance_directories`** — Creates on-disk data directories for all concept entries.
 - **`validate_concept_structure`** — Validates that a concept dict contains all required fields before training.
 - **`calculate_recommended_training_steps`** — Returns a recommended step count given a number of training images.
 - **`count_images_in_directory`** — Counts `.jpg`, `.jpeg`, and `.png` files in a given directory.
 - **`validate_image_count`** — Validates that image count is within the 3–10 recommended range and returns a human-readable status message.
-- **`build_training_command`** — Assembles the full `accelerate launch train_dreambooth.py ...` command string from structured parameters.
+- **`build_training_command`** — Assembles the full `accelerate launch train_dreambooth.py ...` command string from structured parameters. Note: the default `--save_interval=10000` steps exceeds the typical 2000-step training run, so intermediate saves may not occur; the final model is saved after training completes.
 
 ## Infrastructure
 
