@@ -30,7 +30,7 @@ pip install pre-commit && pre-commit install && pre-commit install --hook-type p
 pip install -r config/requirements.txt
 ```
 
-> **Python version note:** The Docker image uses Python 3.11. The CI pipeline uses Python 3.9. Local development should use Python 3.10+.
+> **Python version note:** Python 3.11 is used consistently across the Docker image, CI pipeline, and `pyproject.toml` lint/format targets. Use Python 3.11 for local development outside Docker.
 
 ### Notes
 

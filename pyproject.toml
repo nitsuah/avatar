@@ -1,7 +1,7 @@
 [tool.ruff]
 line-length = 120
 fix = true
-target-version = "py310"
+target-version = "py311"
 
 [tool.ruff.lint]
 select = [
@@ -24,7 +24,7 @@ line-ending = "auto"
 
 [tool.black]
 line-length = 120
-target-version = ['py310']
+target-version = ['py311']
 skip-string-normalization = true
 exclude = [".ipynb_checkpoints"]
 

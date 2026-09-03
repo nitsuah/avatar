@@ -18,7 +18,7 @@
 | PR Turnaround | TBD        | Typical merge time   |
 | Skipped Tests | 0          | All tests passing    |
 | Health Score  | TBD        | Overall health score |
-| Last Updated  | 2026-08-22 | Documentation audit and accuracy pass |
+| Last Updated  | 2026-09-02 | Python version alignment, dataset validation cell, dependency pinning, docs audit |
 
 
 <!--
