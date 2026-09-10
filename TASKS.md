@@ -14,10 +14,15 @@
 - [x] Clarify Python version matrix — aligned CI, Dockerfile, and `pyproject.toml` (ruff/black targets) to Python 3.11.
 - [x] Add dataset validation cell to notebook — new "Step 6.5" cell surfaces a clear error when any concept's image count is outside the 3–10 recommended range before Step 7 (training) runs; mirrors the tested `avatar/utils.py::validate_image_count` logic.
 - [x] Pin exact versions in `config/requirements.txt` — resolved and pinned against the `python:3.11-slim-bookworm` Docker base (jupyter==1.1.1, notebook==7.6.2, ipykernel==7.3.0, matplotlib==3.11.1, pandas==3.0.5, numpy==2.4.6, pytest==9.1.1, pytest-cov==7.1.0, flake8==7.3.0).
+- [x] Pin `actions/setup-python` to a commit SHA in CI (CWE-494) — `.github/workflows/ci.yml` now references `actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7`; SHA independently verified against the tag via the GitHub API before applying.
+- [x] Align Step 6.5's `_count_images` with `DreamBoothDataset`'s actual accept-any-Pillow-openable-file contract — the notebook cell previously undercounted concept directories that used image extensions outside `('.jpg', '.jpeg', '.png')`, producing a false "not enough images" error before real training would have failed. Now opens+verifies each regular file with Pillow instead of filtering by suffix.
 
 ## In Progress
 
 ## Todo
+
+- [ ] Bring `avatar/utils.py::count_images_in_directory` (and `validate_image_count`) in line with the notebook's Pillow-based counting (see the "Align Step 6.5" item above — the notebook and `utils.py` now diverge). Deferred separately because `tests/test_utils.py::test_count_images_with_files` creates fixture images via `.touch()` (empty files Pillow cannot open); a content-based rewrite needs new fixtures (real minimal images, e.g. via `PIL.Image.new(...).save(...)`) before the function itself can change.
+- [ ] Commit a hashed lock file (`pip-compile --generate-hashes` or equivalent) for the full Python dependency graph used by `config/requirements.txt` / `Dockerfile` (CWE-829) — flagged as a "heavy lift" by CodeRabbit; needs `pip-tools` added, a generated lock file, and a CI step to install from it.
 
 - [ ] Add model evaluation step to notebook — compute CLIP similarity score between generated samples and training images to quantify output quality.
 - [ ] Add `nbconvert` step to CI — execute the notebook headlessly to catch broken cells (guard with `@pytest.mark.notebook` or a separate workflow job).
