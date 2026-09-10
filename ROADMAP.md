@@ -12,10 +12,15 @@
 
 ## Q2
 
-- [ ] User feedback integration
+- [ ] **User feedback integration — needs scoping, not yet actionable.** The original bullet had no defined mechanism, data model, or trigger, so it hasn't been implemented; scheduling it requires answering:
+  - *Feedback on what?* Generated sample images (thumbs up/down per sample), overall model quality after training, or the notebook/workflow experience itself?
+  - *Collection mechanism?* A widget cell in the notebook (e.g. `ipywidgets` buttons), a GitHub issue template, or an external form?
+  - *Storage/consumption?* Where does feedback land, and who/what acts on it (retraining trigger, roadmap input, nothing automated)?
+  - *Owner?* Single-contributor project — confirm this is worth building vs. simply inviting feedback via GitHub Discussions/Issues.
+  Until these are answered, this stays a placeholder rather than a committed feature.
 - [ ] Performance improvements
-- [ ] Align CI Python version (currently 3.9) with Dockerfile base (3.11) and pyproject target (3.10)
-- [ ] Add dataset validation step to notebook (enforce 3–10 image limit with user-friendly output)
+- [x] Align CI Python version with Dockerfile base and pyproject target — all three now target Python 3.11.
+- [x] Add dataset validation step to notebook (enforce 3–10 image limit with user-friendly output) — added as the "Step 6.5" cell in `notebooks/DreamBooth_Stable_Diffusion.ipynb`.
 - [ ] Add model evaluation metrics to notebook (FID score, CLIP similarity) so output quality can be measured objectively
 
 ## Q3
