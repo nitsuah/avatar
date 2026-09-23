@@ -2,20 +2,8 @@
 
 ## Done
 
-- [x] Identify repo purpose — DreamBooth fine-tuning on Stable Diffusion v1-5 via Jupyter notebook on Google Colab.
-- [x] Add `requirements.txt` — available at `config/requirements.txt`.
-- [x] Add README with "how to run the notebook" and expected outputs.
-- [x] Extract testable utilities to `avatar/utils.py` (concepts list, image validation, training command builder).
-- [x] Create `tests/test_utils.py` — 24 tests covering all utility functions.
-- [x] Achieve 100% coverage of `avatar/utils.py`.
-- [x] Set up Docker for local development (test + notebook stages).
-- [x] Configure pre-commit hooks (ruff, black, flake8, isort, pytest-on-push).
-- [x] Set up GitHub Actions CI (lint + test on push/PR to main).
-- [x] Clarify Python version matrix — aligned CI, Dockerfile, and `pyproject.toml` (ruff/black targets) to Python 3.11.
-- [x] Add dataset validation cell to notebook — new "Step 6.5" cell surfaces a clear error when any concept's image count is outside the 3–10 recommended range before Step 7 (training) runs; mirrors the tested `avatar/utils.py::validate_image_count` logic.
-- [x] Pin exact versions in `config/requirements.txt` — resolved and pinned against the `python:3.11-slim-bookworm` Docker base (jupyter==1.1.1, notebook==7.6.2, ipykernel==7.3.0, matplotlib==3.11.1, pandas==3.0.5, numpy==2.4.6, pytest==9.1.1, pytest-cov==7.1.0, flake8==7.3.0).
-- [x] Pin `actions/setup-python` to a commit SHA in CI (CWE-494) — `.github/workflows/ci.yml` now references `actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7`; SHA independently verified against the tag via the GitHub API before applying.
-- [x] Align Step 6.5's `_count_images` with `DreamBoothDataset`'s actual accept-any-Pillow-openable-file contract — the notebook cell previously undercounted concept directories that used image extensions outside `('.jpg', '.jpeg', '.png')`, producing a false "not enough images" error even though real training would have accepted those files. Now opens+verifies each regular file with Pillow instead of filtering by suffix.
+_See `docs/ROADMAP.md` Q1/Q2 for the condensed shipped-milestone record and
+`CHANGELOG.md` for the change-by-change history._
 
 ## In Progress
 
