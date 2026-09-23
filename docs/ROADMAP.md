@@ -19,7 +19,7 @@
   - *Owner?* Single-contributor project — confirm this is worth building vs. simply inviting feedback via GitHub Discussions/Issues.
   Until these are answered, this stays a placeholder rather than a committed feature.
 - [ ] Performance improvements
-- [x] Align CI Python version with Dockerfile base and pyproject target — all three now target Python 3.11.
+- [x] Align CI Python version with Dockerfile base and pyproject target — all three target Python 3.12 (raised from 3.11 to unblock Dependabot's numpy 2.5.3 bump).
 - [x] Add dataset validation step to notebook (enforce 3–10 image limit with user-friendly output) — added as the "Step 6.5" cell in `notebooks/DreamBooth_Stable_Diffusion.ipynb`.
 - [ ] Add model evaluation metrics to notebook (FID score, CLIP similarity) so output quality can be measured objectively
 

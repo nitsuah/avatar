@@ -23,8 +23,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Fixed
 
 - Added explicit `contents: read` permission to CI build job to resolve GITHUB_TOKEN scope warning (#19).
+- Step 6.5's dataset-count check now opens+verifies each file with Pillow instead
+  of filtering by `.jpg`/`.jpeg`/`.png` suffix, matching `DreamBoothDataset`'s
+  actual accept-any-Pillow-openable-file contract — previously undercounted
+  concept directories using other image extensions, producing a false
+  "not enough images" error.
 
 ### Security
+
+- Pinned `actions/setup-python` to a commit SHA in CI (CWE-494), verified
+  against the tag via the GitHub API before applying.
 
 ## [0.1.0] - 2024-06-01
 
