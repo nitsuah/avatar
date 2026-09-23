@@ -2,8 +2,8 @@
 
 ## Done
 
-_See `docs/ROADMAP.md` Q1/Q2 for the condensed shipped-milestone record and
-`CHANGELOG.md` for the change-by-change history._
+_See [docs/ROADMAP.md](ROADMAP.md) Q1/Q2 for the condensed shipped-milestone record and
+[docs/CHANGELOG.md](CHANGELOG.md) for the change-by-change history._
 
 ## In Progress
 
