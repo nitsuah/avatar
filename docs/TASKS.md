@@ -9,7 +9,7 @@ _See [docs/ROADMAP.md](ROADMAP.md) Q1/Q2 for the condensed shipped-milestone rec
 
 ## Todo
 
-- [ ] Bring `avatar/utils.py::count_images_in_directory` (and `validate_image_count`) in line with the notebook's Pillow-based counting (the notebook's "Step 6.5" dataset-validation cell counts images with Pillow since #22/#25, see `docs/CHANGELOG.md`, so the notebook and `utils.py` now diverge). Deferred separately because `tests/test_utils.py::test_count_images_with_files` creates fixture images via `.touch()` (empty files Pillow cannot open); a content-based rewrite needs new fixtures (real minimal images, e.g. via `PIL.Image.new(...).save(...)`) before the function itself can change.
+- [ ] Bring `avatar/utils.py::count_images_in_directory` (and `validate_image_count`) in line with the notebook's Pillow-based counting (the notebook's "Step 6.5" dataset-validation cell was added in #22 and switched to Pillow-based counting in #25, see `docs/CHANGELOG.md`, so the notebook and `utils.py` now diverge). Deferred separately because `tests/test_utils.py::test_count_images_with_files` creates fixture images via `.touch()` (empty files Pillow cannot open); a content-based rewrite needs new fixtures (real minimal images, e.g. via `PIL.Image.new(...).save(...)`) before the function itself can change.
 - [ ] Commit a hashed lock file (`pip-compile --generate-hashes` or equivalent) for the full Python dependency graph used by `config/requirements.txt` / `Dockerfile` (CWE-829) — flagged as a "heavy lift" by CodeRabbit; needs `pip-tools` added, a generated lock file, and a CI step to install from it.
 
 - [ ] Add model evaluation step to notebook — compute CLIP similarity score between generated samples and training images to quantify output quality.
