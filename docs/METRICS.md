@@ -18,7 +18,7 @@
 | PR Turnaround | TBD        | Typical merge time   |
 | Skipped Tests | 0          | All tests passing    |
 | Health Score  | TBD        | Overall health score |
-| Last Updated  | 2026-09-02 | Python version alignment, dataset validation cell, dependency pinning, docs audit |
+| Last Updated  | 2026-09-24 | PMO audit re-verified in Docker: `docker compose -f config/docker-compose.yml --profile test run --rm test` gives 25 passed; with `--cov=avatar`, `avatar/utils.py` is 100% (38 stmts, 0 miss). Values above unchanged. |
 
 
 <!--
