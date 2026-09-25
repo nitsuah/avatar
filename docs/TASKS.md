@@ -1,9 +1,12 @@
 # Tasks
 
+> 🧭 [avatar](../README.md) · [Features](./FEATURES.md) · [Roadmap](./ROADMAP.md) · **Tasks** · [Changelog](./CHANGELOG.md) · [Metrics](./METRICS.md) <!-- nav -->
+
+Last Updated: 2026-09-24
+
 ## Done
 
-_See [docs/ROADMAP.md](ROADMAP.md) Q1/Q2 for the condensed shipped-milestone record and
-[docs/CHANGELOG.md](CHANGELOG.md) for the change-by-change history._
+_Shipped work lives in [FEATURES](./FEATURES.md) (capabilities) and [CHANGELOG](./CHANGELOG.md) (change-by-change history)._
 
 ## In Progress
 
@@ -18,7 +21,7 @@ _See [docs/ROADMAP.md](ROADMAP.md) Q1/Q2 for the condensed shipped-milestone rec
 - [ ] Document the `build_training_command` utility in README — show how to use it to reproduce the training command locally.
 - [ ] Add Gradio or Streamlit inference UI — wrap the trained model in a simple web form for non-technical users.
 - [ ] Add a `CONTRIBUTING.md` entry (or link to `nitsuah/.github`) to the local repo root for discoverability. GitHub already serves the org defaults: as of the 2026-09-24 PMO audit, `gh api repos/nitsuah/avatar/community/profile` resolves `contributing`, `code_of_conduct` and `pull_request_template` from `nitsuah/.github`. This item is only about in-repo discoverability, so P3.
-- [ ] Scope "user feedback integration" (see `ROADMAP.md` Q2) — needs a concrete mechanism, data model, and trigger defined before it's actionable; not implemented here per explicit instruction not to guess at scope.
+- [ ] Scope "user feedback integration" (see `ROADMAP.md` 2027 Q1) — needs a concrete mechanism, data model, and trigger defined before it's actionable; not implemented here per explicit instruction not to guess at scope.
 - [ ] Create `run_notebook.sh` helper script:
 
 ```bash
