@@ -92,6 +92,8 @@ Shared community policies are centralized in https://github.com/nitsuah/.github:
 
 Every committed Markdown doc in this repo (other than this README, `.github/` and `templates/`), the same set mirrored into the Obsidian vault, so none of them is orphaned.
 
+**`docs/`**
+
 - [Changelog](./docs/CHANGELOG.md) — `docs/CHANGELOG.md`
 - [Features](./docs/FEATURES.md) — `docs/FEATURES.md`
 - [Metrics](./docs/METRICS.md) — `docs/METRICS.md`
