@@ -35,6 +35,6 @@
 - **Container Healthcheck** — Docker Compose and the Dockerfile both configure a curl-based healthcheck on the Jupyter port.
 - **25 Unit Tests, 100% Coverage** — All utility functions in `avatar/utils.py` are covered by pytest with 25 tests across 7 test classes.
 - **Pre-commit Hooks** — Lint (ruff, flake8), format (black, isort), and test-on-push hooks enforced via `.pre-commit-config.yaml`.
-- **GitHub Actions CI** — Runs linting and the full test suite on every push and pull request to `main`, with least-privilege `GITHUB_TOKEN` permissions and SHA-pinned actions.
+- **GitHub Actions CI** — Runs linting and the full test suite on every push and pull request to `main`, with least-privilege `GITHUB_TOKEN` permissions; `actions/setup-python` is pinned to a commit SHA.
 - **Python 3.12 Everywhere** — CI, the Docker base image, and `pyproject.toml` lint/format targets all target Python 3.12; runtime dependencies are pinned in `config/requirements.txt`.
 - **Environment Variable Template** — `.env.example` documents `JUPYTER_TOKEN` and other runtime variables.
