@@ -127,18 +127,21 @@ def count_images_in_directory(directory: str, extensions: tuple = ('.jpg', '.jpe
     if not os.path.exists(directory):
         return 0
 
+    # Normalize extensions to lowercase for case-insensitive matching
+    norm_extensions = tuple(ext.lower() for ext in extensions)
+
     if Image is None:
         # Fallback to extension-based counting if Pillow not available
         count = 0
         for file in os.listdir(directory):
-            if file.lower().endswith(extensions):
+            if file.lower().endswith(norm_extensions):
                 count += 1
         return count
 
     count = 0
     for file in os.listdir(directory):
         # Filter against extensions first (matches fallback behavior)
-        if not file.lower().endswith(extensions):
+        if not file.lower().endswith(norm_extensions):
             continue
         full_path = os.path.join(directory, file)
         if not os.path.isfile(full_path):
