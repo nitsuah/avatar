@@ -182,6 +182,19 @@ class TestImageCounting:
         count = count_images_in_directory("/nonexistent/path")
         assert count == 0
 
+    def test_count_images_skips_corrupt_file(self, tmp_path):
+        """Test that corrupt image files are not counted (Pillow path only)"""
+        if not PIL_AVAILABLE:
+            pytest.skip("Pillow not available")
+        # Create valid images
+        _create_test_image(tmp_path / "valid1.jpg")
+        _create_test_image(tmp_path / "valid2.png")
+        # Create corrupt .jpg file
+        (tmp_path / "corrupt.jpg").write_bytes(b"not a valid image")
+
+        count = count_images_in_directory(str(tmp_path))
+        assert count == 2
+
     def test_validate_image_count_optimal(self, tmp_path):
         """Test validation with optimal image count"""
         for i in range(5):

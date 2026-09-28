@@ -143,6 +143,9 @@ def count_images_in_directory(directory: str, extensions: tuple = ('.jpg', '.jpe
         try:
             with Image.open(full_path) as img:
                 img.verify()
+            # Reopen and load to ensure pixel data decodes successfully
+            with Image.open(full_path) as img:
+                img.load()
             count += 1
         except Exception:
             continue
