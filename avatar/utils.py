@@ -137,6 +137,9 @@ def count_images_in_directory(directory: str, extensions: tuple = ('.jpg', '.jpe
 
     count = 0
     for file in os.listdir(directory):
+        # Filter against extensions first (matches fallback behavior)
+        if not file.lower().endswith(extensions):
+            continue
         full_path = os.path.join(directory, file)
         if not os.path.isfile(full_path):
             continue
