@@ -4,8 +4,13 @@ These are testable Python functions that support the notebook workflow.
 """
 import os
 import json
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Tuple
 from pathlib import Path
+
+try:
+    from PIL import Image
+except ImportError:
+    Image = None
 
 
 def create_concepts_list(
@@ -108,38 +113,59 @@ def calculate_recommended_training_steps(num_images: int, base_steps: int = 100)
 def count_images_in_directory(directory: str, extensions: tuple = ('.jpg', '.jpeg', '.png')) -> int:
     """
     Count image files in a directory.
-    
+
+    Uses Pillow to verify images (matching DreamBoothDataset's loading contract),
+    not just extension matching. Falls back to extension check if Pillow unavailable.
+
     Args:
         directory: Directory path
-        extensions: Tuple of valid image extensions
-        
+        extensions: Tuple of valid image extensions (used as fallback if Pillow unavailable)
+
     Returns:
-        Number of image files found
+        Number of valid image files found
     """
     if not os.path.exists(directory):
         return 0
-    
+
+    if Image is None:
+        # Fallback to extension-based counting if Pillow not available
+        count = 0
+        for file in os.listdir(directory):
+            if file.lower().endswith(extensions):
+                count += 1
+        return count
+
     count = 0
     for file in os.listdir(directory):
-        if file.lower().endswith(extensions):
+        full_path = os.path.join(directory, file)
+        if not os.path.isfile(full_path):
+            continue
+        try:
+            with Image.open(full_path) as img:
+                img.verify()
             count += 1
+        except Exception:
+            continue
     return count
 
 
-def validate_image_count(directory: str, min_images: int = 3, max_images: int = 10) -> tuple:
+def validate_image_count(directory: str, min_images: int = 3, max_images: int = 10) -> Tuple[bool, int, str]:
     """
     Validate that image count is within recommended range.
-    
+
+    Uses Pillow to verify images (matching DreamBoothDataset's loading contract),
+    not just extension matching.
+
     Args:
         directory: Directory to check
         min_images: Minimum recommended images
         max_images: Maximum recommended images
-        
+
     Returns:
         Tuple of (is_valid, count, message)
     """
     count = count_images_in_directory(directory)
-    
+
     if count < min_images:
         return (False, count, f"Too few images. Found {count}, recommended minimum is {min_images}")
     elif count > max_images:
