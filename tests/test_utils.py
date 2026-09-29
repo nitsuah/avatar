@@ -136,26 +136,26 @@ class TestConceptValidation:
 
 class TestTrainingStepsCalculation:
     """Tests for training steps calculations"""
-    
+
     def test_calculate_training_steps_default(self):
         """Test default training steps calculation"""
         steps = calculate_recommended_training_steps(6)
-        assert steps == 700  # 6 * 100 + 100
-    
+        assert steps == 420  # 6 * 70 (tier: <= 10)
+
     def test_calculate_training_steps_single_image(self):
         """Test calculation with single image"""
         steps = calculate_recommended_training_steps(1)
-        assert steps == 200  # 1 * 100 + 100
-    
+        assert steps == 100  # 1 * 100 (tier: <= 5)
+
     def test_calculate_training_steps_many_images(self):
         """Test calculation with many images"""
         steps = calculate_recommended_training_steps(10)
-        assert steps == 1100  # 10 * 100 + 100
-    
-    def test_calculate_training_steps_custom_base(self):
-        """Test calculation with custom base steps"""
-        steps = calculate_recommended_training_steps(5, base_steps=200)
-        assert steps == 700  # 5 * 100 + 200
+        assert steps == 700  # 10 * 70 (tier: <= 10)
+
+    def test_calculate_training_steps_very_many_images(self):
+        """Test calculation with very many images"""
+        steps = calculate_recommended_training_steps(25)
+        assert steps == 750  # 25 * 30 (tier: > 20)
 
 
 class TestImageCounting:
