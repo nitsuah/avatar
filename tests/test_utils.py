@@ -19,6 +19,21 @@ from avatar.utils import (
     build_training_command
 )
 
+try:
+    from PIL import Image
+    PIL_AVAILABLE = True
+except ImportError:
+    PIL_AVAILABLE = False
+
+
+def _create_test_image(path: Path):
+    """Create a minimal valid test image using Pillow."""
+    if not PIL_AVAILABLE:
+        path.touch()
+        return
+    img = Image.new('RGB', (10, 10), color='red')
+    img.save(path)
+
 
 class TestConceptsManagement:
     """Tests for concepts list creation and management"""
@@ -121,80 +136,93 @@ class TestConceptValidation:
 
 class TestTrainingStepsCalculation:
     """Tests for training steps calculations"""
-    
+
     def test_calculate_training_steps_default(self):
         """Test default training steps calculation"""
         steps = calculate_recommended_training_steps(6)
-        assert steps == 700  # 6 * 100 + 100
-    
+        assert steps == 420  # 6 * 70 (tier: <= 10)
+
     def test_calculate_training_steps_single_image(self):
         """Test calculation with single image"""
         steps = calculate_recommended_training_steps(1)
-        assert steps == 200  # 1 * 100 + 100
-    
+        assert steps == 100  # 1 * 100 (tier: <= 5)
+
     def test_calculate_training_steps_many_images(self):
         """Test calculation with many images"""
         steps = calculate_recommended_training_steps(10)
-        assert steps == 1100  # 10 * 100 + 100
-    
-    def test_calculate_training_steps_custom_base(self):
-        """Test calculation with custom base steps"""
-        steps = calculate_recommended_training_steps(5, base_steps=200)
-        assert steps == 700  # 5 * 100 + 200
+        assert steps == 700  # 10 * 70 (tier: <= 10)
+
+    def test_calculate_training_steps_very_many_images(self):
+        """Test calculation with very many images"""
+        steps = calculate_recommended_training_steps(25)
+        assert steps == 750  # 25 * 30 (tier: > 20)
 
 
 class TestImageCounting:
     """Tests for image counting and validation"""
-    
+
     def test_count_images_empty_directory(self, tmp_path):
         """Test counting in empty directory"""
         count = count_images_in_directory(str(tmp_path))
         assert count == 0
-    
+
     def test_count_images_with_files(self, tmp_path):
         """Test counting actual image files"""
         # Create dummy image files
-        (tmp_path / "image1.jpg").touch()
-        (tmp_path / "image2.png").touch()
-        (tmp_path / "image3.jpeg").touch()
+        _create_test_image(tmp_path / "image1.jpg")
+        _create_test_image(tmp_path / "image2.png")
+        _create_test_image(tmp_path / "image3.jpeg")
         (tmp_path / "not_an_image.txt").touch()
-        
+
         count = count_images_in_directory(str(tmp_path))
         assert count == 3
-    
+
     def test_count_images_nonexistent_directory(self):
         """Test counting in nonexistent directory"""
         count = count_images_in_directory("/nonexistent/path")
         assert count == 0
-    
+
+    def test_count_images_skips_corrupt_file(self, tmp_path):
+        """Test that corrupt image files are not counted (Pillow path only)"""
+        if not PIL_AVAILABLE:
+            pytest.skip("Pillow not available")
+        # Create valid images
+        _create_test_image(tmp_path / "valid1.jpg")
+        _create_test_image(tmp_path / "valid2.png")
+        # Create corrupt .jpg file
+        (tmp_path / "corrupt.jpg").write_bytes(b"not a valid image")
+
+        count = count_images_in_directory(str(tmp_path))
+        assert count == 2
+
     def test_validate_image_count_optimal(self, tmp_path):
         """Test validation with optimal image count"""
         for i in range(5):
-            (tmp_path / f"image{i}.jpg").touch()
-        
+            _create_test_image(tmp_path / f"image{i}.jpg")
+
         is_valid, count, message = validate_image_count(str(tmp_path))
-        
+
         assert is_valid is True
         assert count == 5
         assert "optimal" in message.lower()
-    
+
     def test_validate_image_count_too_few(self, tmp_path):
         """Test validation with too few images"""
-        (tmp_path / "image1.jpg").touch()
-        
+        _create_test_image(tmp_path / "image1.jpg")
+
         is_valid, count, message = validate_image_count(str(tmp_path))
-        
+
         assert is_valid is False
         assert count == 1
         assert "too few" in message.lower()
-    
+
     def test_validate_image_count_too_many(self, tmp_path):
         """Test validation with too many images"""
         for i in range(15):
-            (tmp_path / f"image{i}.jpg").touch()
-        
+            _create_test_image(tmp_path / f"image{i}.jpg")
+
         is_valid, count, message = validate_image_count(str(tmp_path))
-        
+
         assert is_valid is False
         assert count == 15
         assert "too many" in message.lower()
@@ -286,19 +314,19 @@ class TestIntegration:
         # Setup
         instance_dir = tmp_path / "user" / "nitsuah"
         instance_dir.mkdir(parents=True)
-        
+
         # Add images
-        for i in range(6):
-            (instance_dir / f"photo{i}.jpg").touch()
-        
+        for i in range(10):
+            _create_test_image(instance_dir / f"photo{i}.jpg")
+
         # Validate
         is_valid, count, message = validate_image_count(str(instance_dir))
         assert is_valid
-        
+
         # Calculate steps
         steps = calculate_recommended_training_steps(count)
         assert steps == 700
-        
+
         # Build command
         cmd = build_training_command(
             model_name="model",
@@ -307,5 +335,5 @@ class TestIntegration:
             max_train_steps=steps,
             save_sample_prompt="photo of nitsuah person"
         )
-        
+
         assert str(steps) in cmd
