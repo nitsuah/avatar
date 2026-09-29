@@ -316,7 +316,7 @@ class TestIntegration:
         instance_dir.mkdir(parents=True)
 
         # Add images
-        for i in range(6):
+        for i in range(10):
             _create_test_image(instance_dir / f"photo{i}.jpg")
 
         # Validate
