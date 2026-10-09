@@ -92,3 +92,4 @@ dist/
 build/
 out/
 target/
+/.claude/
