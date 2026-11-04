@@ -1,6 +1,7 @@
 """
 Test suite for avatar utilities extracted from the DreamBooth notebook.
 """
+# ruff: noqa: S101
 import os
 import json
 import tempfile
@@ -71,9 +72,9 @@ class TestConceptsManagement:
         """Test that saved JSON is properly formatted"""
         concepts = create_concepts_list("nitsuah", "man")
         filepath = tmp_path / "concepts.json"
-        
+
         save_concepts_json(concepts, str(filepath))
-        
+
         with open(filepath, "r") as f:
             content = f.read()
             # Check it's properly indented
@@ -81,6 +82,21 @@ class TestConceptsManagement:
             # Check all keys are present
             assert "instance_prompt" in content
             assert "class_prompt" in content
+
+    def test_load_concepts_json_malformed_raises(self, tmp_path):
+        """Test that malformed JSON raises JSONDecodeError"""
+        filepath = tmp_path / "malformed.json"
+        filepath.write_text("{ not valid json }")
+
+        with pytest.raises(json.JSONDecodeError):
+            load_concepts_json(str(filepath))
+
+    def test_load_concepts_json_missing_raises(self, tmp_path):
+        """Test that missing file raises FileNotFoundError"""
+        filepath = tmp_path / "does_not_exist.json"
+
+        with pytest.raises(FileNotFoundError):
+            load_concepts_json(str(filepath))
 
 
 class TestDirectoryManagement:
