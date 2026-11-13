@@ -23,6 +23,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Expanded the vague "User feedback integration" roadmap item into a proper scoping note with open questions, rather than guessing at an implementation.
 - Bumped `actions/checkout` from v6 to v7 in CI (#17).
 - Bumped `actions/setup-python` from v6 to v7 in CI (#18).
+- Bumped `pandas` 3.1.0 -> 3.1.1 (#54) and `notebook` 7.6.4 -> 7.6.5; `pip-audit` reports no known vulnerabilities in `config/requirements.txt`.
 - Dependency bumps: numpy 2.5.3 (#23), pandas 3.0.6 (#26), matplotlib 3.11.2 (#27).
 - README "Copy Colab file" link now opens this repo's own notebook instead of the archived buildspace `diffusers` fork.
 - Planning docs reset for 2027 (`pmo-ff`): completed roadmap items condensed into FEATURES, open 2026 items carried into 2027 Q1, breadcrumb navigation + README docs index added.
