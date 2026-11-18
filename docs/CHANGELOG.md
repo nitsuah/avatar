@@ -15,6 +15,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Pinned patched transitive floors in `config/requirements.txt` (anyio 4.16.0, certifi 2026.10.23, idna 3.20, nbconvert 7.17.2, urllib3 2.8.0) so the repo-health scan stops resolving old vulnerable versions, and moved the repo-health workflow to shared kit `nitsuah/.github@a0df883` (the `7d3c243` kit shipped msgpack 1.2.1 in its own `uv.lock`).
 - Added .claude/ to .gitignore so local Claude Code tooling no longer leaves the checkout dirty.
 - Agent instructions (`.github/copilot-instructions.md`) now require closing tracked work in the same PR: update `docs/TASKS.md`, `docs/ROADMAP.md` and this changelog before the last push, and confirm `git diff origin/main...HEAD --stat` includes them before merge; added `.github/pull_request_template.md` with a "Closes TASKS item(s)" checklist.
 - Raised the Python floor to 3.12 (previously aligned to 3.11) across CI (`.github/workflows/ci.yml`), the Dockerfile base image, and `pyproject.toml` ruff/black targets; updated the README's Python version note accordingly. This unblocks Dependabot PR #23 (numpy 2.4.6 -> 2.5.3), which requires Python >=3.12.
