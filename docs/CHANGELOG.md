@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `promo/spots.json` with the 28 documented showcase features (#61).
 - Added batch generation mode and seed interpolation roadmap items (#16).
 - Added a dataset validation cell ("Step 6.5") to `notebooks/DreamBooth_Stable_Diffusion.ipynb` that raises a clear error before training if any concept has fewer than 3 or more than 10 images.
+- Added edge case tests for `avatar.utils` in `tests/test_utils_edge_cases.py` covering tier boundaries, image count bounds, Pillow fallback path, and command building (#64).
 
 ### Changed
 
