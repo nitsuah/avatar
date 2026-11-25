@@ -10,6 +10,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- README now documents how to reproduce the training command with `build_training_command` (#58).
+- Added root `CONTRIBUTING.md` with shared project guidance (#59).
+- Added `scripts/run_notebook.sh` to execute notebooks headlessly with nbconvert (#60).
+- Added `promo/spots.json` with the 28 documented showcase features (#61).
 - Added batch generation mode and seed interpolation roadmap items (#16).
 - Added a dataset validation cell ("Step 6.5") to `notebooks/DreamBooth_Stable_Diffusion.ipynb` that raises a clear error before training if any concept has fewer than 3 or more than 10 images.
 

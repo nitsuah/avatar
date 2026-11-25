@@ -79,6 +79,26 @@ Key training settings:
 - Step 10: Generate images with custom prompts
 - Step 11: Upload your trained model to HuggingFace
 
+## Reproduce the training command locally
+
+The notebook's `accelerate launch train_dreambooth.py` command is produced by `avatar.utils.build_training_command`; print the equivalent command locally with:
+
+```python
+from avatar.utils import create_concepts_list, save_concepts_json, build_training_command
+
+concepts = create_concepts_list("nitsuah", "man", base_data_dir="data")
+save_concepts_json(concepts, "concepts_list.json")
+print(build_training_command(
+    "runwayml/stable-diffusion-v1-5",
+    "out",
+    "concepts_list.json",
+    700,
+    "photo of nitsuah man",
+))
+```
+
+Optional arguments are `resolution` (512), `train_batch_size` (1), and `learning_rate` (1e-6).
+
 ## Community Standards
 
 Shared community policies are centralized in https://github.com/nitsuah/.github:
