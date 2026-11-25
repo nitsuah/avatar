@@ -25,28 +25,23 @@ _Shipped work lives in [FEATURES](./FEATURES.md) (capabilities) and [CHANGELOG](
 - [ ] Export notebook to `examples/DreamBooth_Stable_Diffusion.html` so users can preview the workflow without running Colab.
   - Priority: P3
   - Type: Docs
-- [ ] Document the `build_training_command` utility in README — show how to use it to reproduce the training command locally.
+- [x] Document the `build_training_command` utility in README — local reproduction example added (#58).
   - Priority: P3
   - Type: Docs
 - [ ] Add Gradio or Streamlit inference UI — wrap the trained model in a simple web form for non-technical users.
   - Priority: P2
   - Type: Feature
-- [ ] Add a `CONTRIBUTING.md` entry (or link to `nitsuah/.github`) to the local repo root for discoverability. GitHub already serves the org defaults: as of the 2026-09-24 PMO audit, `gh api repos/nitsuah/avatar/community/profile` resolves `contributing`, `code_of_conduct` and `pull_request_template` from `nitsuah/.github`. This item is only about in-repo discoverability, so P3.
+- [x] Add a `CONTRIBUTING.md` entry (or link to `nitsuah/.github`) to the local repo root for discoverability (#59). GitHub already serves the org defaults: as of the 2026-09-24 PMO audit, `gh api repos/nitsuah/avatar/community/profile` resolves `contributing`, `code_of_conduct` and `pull_request_template` from `nitsuah/.github`. This item is only about in-repo discoverability, so P3.
   - Priority: P3
   - Type: Docs
 - [ ] Scope "user feedback integration" (see `ROADMAP.md` 2027 Q1) — needs a concrete mechanism, data model, and trigger defined before it's actionable; not implemented here per explicit instruction not to guess at scope.
   - Priority: P3
   - Type: Docs
-- [ ] Create `run_notebook.sh` helper script:
+- [x] Create `run_notebook.sh` helper script (`scripts/run_notebook.sh`, #60):
   - Priority: P3
   - Type: Tech debt
 
-```bash
-#!/usr/bin/env bash
-python -m pip install -r config/requirements.txt
-NOTEBOOK="${1:-notebooks/DreamBooth_Stable_Diffusion.ipynb}"
-jupyter nbconvert --to html "$NOTEBOOK" --ExecutePreprocessor.timeout=600 --execute
-```
+Lives at `scripts/run_notebook.sh`; run it with an optional notebook path.
 
 <!--
 AGENT INSTRUCTIONS:
