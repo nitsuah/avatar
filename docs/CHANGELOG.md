@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+- README section showing how to reproduce the training command locally with `build_training_command` (#58).
 - README now documents how to reproduce the training command with `build_training_command` (#58).
 - Added root `CONTRIBUTING.md` with shared project guidance (#59).
 - Added `scripts/run_notebook.sh` to execute notebooks headlessly with nbconvert (#60).
