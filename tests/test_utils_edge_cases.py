@@ -9,6 +9,7 @@ from avatar import utils
 
 def _create_test_image(path: Path):
     """Create a minimal valid test image using Pillow."""
+    pytest.importorskip("PIL")
     from PIL import Image
     img = Image.new('RGB', (4, 4), color='red')
     img.save(path)
