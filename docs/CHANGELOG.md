@@ -39,6 +39,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `.env.example` trimmed to the one variable that is actually read (`JUPYTER_TOKEN`, via `config/docker-compose.yml`). Dropped the unused `AUTH_SECRET`, `PASSWORD_SALT`, `API_KEY`, `ENVIRONMENT`, `PORT`, and commented-out `DATABASE_URL`, `OTHER_API_URL`, `MAX_UPLOAD_SIZE` entries, plus the generic "AGENT INSTRUCTIONS" header.
 
 ### Fixed
+- Reject negative image counts before calculating recommended training steps (#65).
 
 - `avatar/utils.py::count_images_in_directory` and `validate_image_count` now verify each file with Pillow, like the notebook's Step 6.5 cell, with real-image test fixtures and a corrupt-file test (#35).
 - Added explicit `contents: read` permission to CI build job to resolve GITHUB_TOKEN scope warning (#19).

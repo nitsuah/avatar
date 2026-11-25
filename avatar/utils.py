@@ -103,7 +103,12 @@ def calculate_recommended_training_steps(num_images: int) -> int:
 
     Returns:
         Recommended training steps
+
+    Raises:
+        ValueError: If num_images is negative.
     """
+    if num_images < 0:
+        raise ValueError(f"num_images must be >= 0, got {num_images}")
     if num_images <= 5:
         return 100 * num_images
     elif num_images <= 10:
