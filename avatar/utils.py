@@ -16,6 +16,14 @@ except ImportError:
 logger = logging.getLogger(__name__)
 
 
+def _validate_name(label: str, value: str) -> str:
+    if not value or not value.strip():
+        raise ValueError(f"{label} must not be empty")
+    if "\x00" in value or "/" in value or "\\" in value or value.strip() in {".", ".."}:
+        raise ValueError(f"{label} must be a plain folder name, got {value!r}")
+    return value
+
+
 def create_concepts_list(
     instance_name: str,
     class_name: str,
@@ -31,7 +39,12 @@ def create_concepts_list(
 
     Returns:
         List of concept dictionaries with prompts and data directories
+
+    Raises:
+        ValueError: If a name is empty or is not a plain folder name.
     """
+    _validate_name("instance_name", instance_name)
+    _validate_name("class_name", class_name)
     return [
         {
             "instance_prompt": f"photo of {instance_name} {class_name}",
