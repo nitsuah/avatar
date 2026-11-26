@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 def _validate_name(label: str, value: str) -> str:
     if not value or not value.strip():
         raise ValueError(f"{label} must not be empty")
-    if "/" in value or "\\" in value or value.strip() in {".", ".."}:
+    if "\x00" in value or "/" in value or "\\" in value or value.strip() in {".", ".."}:
         raise ValueError(f"{label} must be a plain folder name, got {value!r}")
     return value
 

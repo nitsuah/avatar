@@ -3,7 +3,7 @@ import pytest
 
 from avatar.utils import create_concepts_list
 
-BAD_NAMES = ["", "  ", "a/b", "a" + "\x5c" + "b", "..", "."]
+BAD_NAMES = ["", "  ", "a/b", "a" + "\x5c" + "b", "..", ".", "bad\x00name"]
 
 
 @pytest.mark.parametrize("bad", BAD_NAMES)
