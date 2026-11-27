@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - README now documents how to reproduce the training command with `build_training_command` (#58).
+- CI: pull requests now run the shared risk guard check (`.github/workflows/risk-guard.yml`) (#70).
 - Added root `CONTRIBUTING.md` with shared project guidance (#59).
 - Added `scripts/run_notebook.sh` to execute notebooks headlessly with nbconvert (#60).
 - Added `promo/spots.json` with the 28 documented showcase features (#61).
